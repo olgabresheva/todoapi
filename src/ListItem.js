@@ -8,7 +8,7 @@ function ListItem(props) {
 
     const nameEditer = (name) => {
         setIsEdit(true);
-        setTaskEdit({taskEdit, name: name});
+        setTaskEdit({...taskEdit, name: name});
     }
 
     const onEditNameChange = (e) => {
@@ -18,7 +18,10 @@ function ListItem(props) {
     return (
         <span>
             {isEdit
-                ? <input type="text" value={taskEdit.name} onChange={onEditNameChange}/>
+                ? <>
+                    <input type="text" value={taskEdit.name} onChange={onEditNameChange}/>
+                    <button onClick={props.SaveTaskName}>S</button>
+                </>
                 : <span onClick={() => nameEditer(props.name)}>{props.name} - </span>
             }
             <span>{props.description}</span>

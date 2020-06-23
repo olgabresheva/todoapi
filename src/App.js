@@ -53,12 +53,16 @@ function App() {
         axios({
             url: `http://localhost:5000/todo/${id}`,
             method: 'PUT',
-            done: !done
+            data: {done: !done}
         })
             .then( res => {
                 getAllToDos();
             })
             .catch(e => console.log(e))
+    }
+
+    const SaveTaskName = () => {
+
     }
 
     return (
@@ -67,6 +71,7 @@ function App() {
             <List list={list}
                   taskRemove={taskRemove}
                   onTaskStatusChange={onTaskStatusChange}
+                  SaveTaskName={SaveTaskName}
                  />
         </div>
     );
