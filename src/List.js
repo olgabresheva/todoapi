@@ -8,8 +8,10 @@ function List(props) {
             {props.list.map(el =>
                 <li key={el._id}>
                     <ListItem name={el.name}
+                              id={el._id}
                               description={el.description}
-                              SaveTaskName={props.SaveTaskName}/>
+                              task={el}
+                              saveTask={props.saveTask}/>
 
                     <button onClick={() => props.onTaskStatusChange(el._id, el.done)}>
                         {

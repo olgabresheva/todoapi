@@ -29,7 +29,7 @@ function App() {
             url: `http://localhost:5000/todo/${id}`,
             method: 'DELETE'
         })
-            .then( res => {
+            .then(res => {
                 getAllToDos();
             })
             .catch(e => console.log(e))
@@ -42,7 +42,7 @@ function App() {
             method: 'POST',
             data: form
         })
-            .then( res => {
+            .then(res => {
                 getAllToDos();
             })
             .catch(e => console.log(e))
@@ -55,14 +55,28 @@ function App() {
             method: 'PUT',
             data: {done: !done}
         })
-            .then( res => {
+            .then(res => {
                 getAllToDos();
             })
             .catch(e => console.log(e))
     }
 
-    const SaveTaskName = () => {
-
+    const saveTask = (id, name, description) => {
+        console.log(id)
+        console.log(name)
+        console.log(description)
+        axios({
+            url: `http://localhost:5000/todo/${id}`,
+            method: 'PATCH',
+            data: {
+                name: name,
+                description: description
+            }
+        })
+            .then(res => {
+                getAllToDos();
+            })
+            .catch(e => console.log(e))
     }
 
     return (
@@ -71,8 +85,8 @@ function App() {
             <List list={list}
                   taskRemove={taskRemove}
                   onTaskStatusChange={onTaskStatusChange}
-                  SaveTaskName={SaveTaskName}
-                 />
+                  saveTask={saveTask}
+            />
         </div>
     );
 }
