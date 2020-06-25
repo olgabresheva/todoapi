@@ -6,7 +6,6 @@ import List from "./List";
 function App() {
 
     const [list, setList] = useState([]);
-    //const [done, setDone] = useState(true);
 
     const getAllToDos = () => {
         axios({
@@ -61,16 +60,16 @@ function App() {
             .catch(e => console.log(e))
     }
 
-    const saveTask = (id, name, description) => {
-        console.log(id)
-        console.log(name)
-        console.log(description)
+    const saveTask = (toDoItem) => {
+        console.log(toDoItem._id)
+        console.log(toDoItem.name)
+        console.log(toDoItem.description)
         axios({
-            url: `http://localhost:5000/todo/${id}`,
+            url: `http://localhost:5000/todo/${toDoItem._id}`,
             method: 'PATCH',
             data: {
-                name: name,
-                description: description
+                name: toDoItem.name,
+                description: toDoItem.description
             }
         })
             .then(res => {
@@ -80,7 +79,8 @@ function App() {
     }
 
     return (
-        <div>
+        <div className="container">
+            <h4>Your To Do List</h4>
             <Form onSubmit={createToDo}/>
             <List list={list}
                   taskRemove={taskRemove}
