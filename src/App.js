@@ -80,8 +80,8 @@ function App() {
 
     return (
         <div className="container">
-            <h4>Your To Do List</h4>
-            <Form onSubmit={createToDo}/>
+            <h4>Your To Do List:</h4>
+            <Form onSubmit={createToDo}/><br/>
             <List list={list}
                   taskRemove={taskRemove}
                   onTaskStatusChange={onTaskStatusChange}

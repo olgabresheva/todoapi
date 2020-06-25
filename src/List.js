@@ -4,19 +4,15 @@ import ListItem from "./ListItem";
 function List(props) {
 
     return (
-        <ul>
+        <div>
             {props.list.map(el =>
-                <li key={el._id}>
+                <li className="card" key={el._id}>
                     <ListItem saveTask={props.saveTask}
-                              todoItem={el}/>
-
-                    <button onClick={() => props.onTaskStatusChange(el._id, el.done)}>
-                        {
-                            el.done ? 'Done' : 'To Be Done'
-                        }</button>
-                    <button onClick={() => props.taskRemove(el._id)}>X</button>
+                              todoItem={el}
+                              onTaskStatusChange={props.onTaskStatusChange}
+                              taskRemove={props.taskRemove}/>
                 </li>)}
-        </ul>
+        </div>
     );
 }
 

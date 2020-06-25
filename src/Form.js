@@ -13,8 +13,8 @@ function Form(props) {
     return (
         <div>
             <input type="text" value={name} onChange={e => setToDoName(e.target.value)}/>
-            <input type="name" value={description} onChange={e => setToDoDesc(e.target.value)}/>
-            <button onClick={onSubmit} disabled={name.trim() === '' || description.trim() === ''} >Add Task</button>
+            <input type="name" value={description} onChange={e => setToDoDesc(e.target.value)}/><br/>
+            <button className="btn btn-outline-success btn-sm" onClick={onSubmit} disabled={name.trim() === '' || description.trim() === ''} >Add Task</button>
         </div>
     );
 }
